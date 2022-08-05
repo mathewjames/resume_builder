@@ -1,44 +1,26 @@
-import {
-  FNAME,
-  LNAME,
-  EMAIL,
-  MOBILE,
-  LINKEDIN,
-  GITHUB,
-  TWITTER,
-  PORTFOLIO,
-} from "../actions/types";
+import { CONTACT } from "../actions/types";
 
 const initialState = {
-  firstname: "",
-  lastname: "",
-  email: "",
-  mobile: "",
-  linkedin: "",
-  github: "",
-  twitter: "",
-  portfolio: "",
+  contact: {
+    fname: "",
+    lname: "",
+    email: "",
+    mobile: "",
+    linkedin: "",
+    git: "",
+    twitter: "",
+    portfolio: "",
+  },
 };
 
-export const contactReducer = (state, action) => {
+const contactReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FNAME:
-      return { ...state, firstname: action.payload };
-    case LNAME:
-      return { ...state, lastname: action.payload };
-    case EMAIL:
-      return { ...state, email: action.payload };
-    case MOBILE:
-      return { ...state, mobile: action.payload };
-    case LINKEDIN:
-      return { ...state, linkedin: action.payload };
-    case GITHUB:
-      return { ...state, github: action.payload };
-    case TWITTER:
-      return { ...state, twitter: action.payload };
-    case PORTFOLIO:
-      return { ...state, portfolio: action.payload };
+    case CONTACT:
+      console.log("state", action.payload);
+      return { ...state, contact: action.payload };
     default:
-      return initialState;
+      return state;
   }
 };
+
+export default contactReducer;

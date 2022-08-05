@@ -1,26 +1,46 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Stack, Button } from "@mui/material";
-import { nextPage, prevPage } from "../redux/actions/buttonActions";
+import { Box, Button, IconButton } from "@mui/material";
 
-export default function Buttons() {
-  const dispatch = useDispatch();
+import BeenhereIcon from "@mui/icons-material/Beenhere";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import EditIcon from "@mui/icons-material/Edit";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+
+export const SubmitButton = (props) => {
   return (
-    <Stack direction="row" spacing={2} sx={{ display: "block" }}>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={(_event) => dispatch(prevPage())}
-      >
-        Previous
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={(_event) => dispatch(nextPage())}
-      >
-        Next
-      </Button>
-    </Stack>
+    <Button variant="contained" type="submit" endIcon={<BeenhereIcon />}>
+      {props.text}
+    </Button>
   );
-}
+};
+
+export const EditButton = (props) => {
+  return (
+    <IconButton variant="contained" color="warning" onClick={props.handleEdit}>
+      <EditIcon />
+    </IconButton>
+  );
+};
+
+export const DeleteButton = (props) => {
+  return (
+    <IconButton variant="contained" color="error" onClick={props.handleDelete}>
+      <DeleteForeverIcon />
+    </IconButton>
+  );
+};
+
+export const AddButton = (props) => {
+  return (
+    <Box sx={{ mb: 3 }}>
+      <Button
+        variant="text"
+        size="large"
+        endIcon={<AddCircleOutlineIcon />}
+        onClick={props.handleOpen}
+      >
+        Add
+      </Button>
+    </Box>
+  );
+};

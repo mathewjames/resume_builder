@@ -5,7 +5,7 @@ const initialState = {
   step: 1,
 };
 
-const buttonReducer = (state, action) => {
+const buttonReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREMENT:
       return {
@@ -18,7 +18,7 @@ const buttonReducer = (state, action) => {
         step: state.step - 1,
       };
     default:
-      return initialState;
+      return state;
   }
 };
 
